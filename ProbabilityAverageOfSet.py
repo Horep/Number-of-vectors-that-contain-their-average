@@ -18,7 +18,7 @@ def avg_in_set(x):
         return False
 
 
-def P_est(N, k):
+def P_est(N, k):  # Estimates probability from Iterations number of trials
     prob = 0
     iterations = 10000
     for i in range(iterations):
@@ -33,7 +33,7 @@ def P_est(N, k):
     return prob/t
 
 
-def P(N, k):
+def P(N, k):  # Calculates exact probability
     prob = 0
     for i in itertools.product(range(1, k+1), repeat=N):
         Add = avg_in_set(list(i))
