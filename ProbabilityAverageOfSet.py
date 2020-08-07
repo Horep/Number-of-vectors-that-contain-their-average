@@ -18,7 +18,7 @@ def avg_in_set(x):
         return False
 
 
-def P_est(N, k):  # Estimates probability from Iterations number of trials
+def P_est(N, k):  # Estimates probability from iterations number of trials
     prob = 0
     iterations = 10000
     for i in range(iterations):
@@ -26,11 +26,10 @@ def P_est(N, k):  # Estimates probability from Iterations number of trials
         Add = avg_in_set(x)
         if Add is True:
             prob += 1
-    t = k**N
     print(f"Lower Bound {k}**(1-{N}) = {k**(1-N)}")
     print(f"Number of true cases = {prob}")
-    print(f"Number of elements = {t}")
-    return prob/t
+    print(f"Number of elements = {iterations}")
+    return prob/iterations
 
 
 def P(N, k):  # Calculates exact probability
