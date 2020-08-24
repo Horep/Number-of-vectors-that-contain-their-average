@@ -12,8 +12,9 @@ def build_set(N, k):  # Build set S from 1 to k with N elements
 
 
 def avg_in_set(x):
-    avg = sum(x)/len(x)
-    if x.count(avg) > 0:
+    N = len(x)
+    x_1 = [N*y for y in x]
+    if x_1.count(sum(x)) > 0:
         return True
     else:
         return False
@@ -43,9 +44,10 @@ def G_est(N, k):  # Estimates probability from 'iterations' number of trials
 
 def A(N, k):  # Calculates exact number of sequences
     prob = 0
-    for i in itertools.product(range(1, k+1), repeat=N):
+    for i in itertools.product(range(0, k+1), repeat=N):
         Add = avg_in_set(list(i))
         if Add is True:
+            print(list(i))
             prob += 1
 
     return prob
@@ -65,7 +67,6 @@ def G(N, k):  # Calculates exact number
     for i in itertools.product(range(1, k+1), repeat=N):
         x = list(i)
         Add = geo_avg_in_set(x)
-        print(f"{x} {Add}")
         if Add is True:
             prob += 1
     return prob
@@ -87,7 +88,7 @@ def GiveTable(y, N_num, k_num):  # Returns a list of GiveList lists for N
     return x
 
 
-def give_nontrivial_consecutive(y, N, num):
+def give_nontrivial_consecutive(y, N, num):  # Calculates non-trivial 1st diff
     x = [0]
     for k in range(2, num+1):
         x.append(y(N, k)-y(N, k-1)-1)
