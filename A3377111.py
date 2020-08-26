@@ -24,3 +24,11 @@ def a(n):  # Calculates exact number of vectors that contain their geo mean
         if Add is True:
             prob += 1
     return prob
+
+
+def GiveSequence(n, m):  # Gives the terms a(n) between n and m (inclusive)
+    x = []
+    for k in range(n, m+1):
+        x.append(a(k))
+        print(x)
+    return x
