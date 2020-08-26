@@ -18,7 +18,7 @@ def geo_avg_in_set(x):  # Checks if the pre mean is in the list
 
 def a(n):  # Calculates exact number of vectors that contain their geo mean
     prob = 0
-    for i in itertools.product(range(1, 4+1), repeat=n):
+    for i in itertools.product(range(1, n+1), repeat=4):
         x = list(i)
         Add = geo_avg_in_set(x)
         if Add is True:
