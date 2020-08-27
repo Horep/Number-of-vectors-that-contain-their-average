@@ -43,6 +43,15 @@ def a(n):  # Calculates exact number of vectors that contain their geo mean
 def GiveSequence(n, m):  # Gives the terms a(n) between n and m (inclusive)
     x = []
     for k in range(n, m+1):
-        x.append(a(k))
+        if k == 1:
+            x.append(1)
+        elif len(x) > 0:
+            if A000188(k) == 1:
+                print(f"A000188({k}) = 1, applying recurrence relation.")
+                x.append(x[len(x)-1] + 1)
+            else:
+                x.append(a(k))
+        else:
+            x.append(a(k))
         print(x)
     return x
