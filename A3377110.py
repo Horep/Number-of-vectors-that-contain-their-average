@@ -25,14 +25,11 @@ def A000188(n):
 
 
 def a(n):  # Calculates exact number of vectors that contain their geo mean
-    if A000188(n) == 1:  # Tests to use recurrence relation a(n) = a(n-1) + 1
-        print(f"A000188({n}) = {A000188(n)}, applying recurrence relation.")
-        prob = 1
-        for i in itertools.product(range(1, n), repeat=3):
-            x = list(i)
-            Add = geo_avg_in_set(x)
-            if Add is True:
-                prob += 1
+    if n == 1:
+        return 1
+    elif A000188(n) == 1:  # Tests to use recurrence relation a(n) = a(n-1) + 1
+        print(f"A000188({n}) = 1, applying recurrence relation.")
+        prob = a(n-1) + 1
     else:  # Brute force method
         prob = 0
         for i in itertools.product(range(1, n+1), repeat=3):
