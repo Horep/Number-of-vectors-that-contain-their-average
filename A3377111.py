@@ -1,19 +1,6 @@
 import itertools
-import numpy as np
-
-
-def geo_pre_mean(iterable):  # Returns product of members of list
-    a = np.array(iterable)
-    return a.prod()
-
-
-def geo_avg_in_set(x):  # Checks if the pre mean is in the list
-    N = len(x)
-    x_1 = [y**N for y in x]
-    if x_1.count(geo_pre_mean(x)) > 0:
-        return True
-    else:
-        return False
+import time
+from GeometricMean import geo_avg_in_set
 
 
 def A000189(n):
@@ -25,6 +12,7 @@ def A000189(n):
 
 
 def a(n):  # Calculates exact number of vectors that contain their geo mean
+    start = time.time()
     if n == 1:
         return 1
     elif A000189(n) == 1:  # Tests to use recurrence relation a(n) = a(n-1) + 1
@@ -37,6 +25,7 @@ def a(n):  # Calculates exact number of vectors that contain their geo mean
             Add = geo_avg_in_set(x)
             if Add is True:
                 prob += 1
+    print(time.time() - start)
     return prob
 
 
