@@ -2,7 +2,7 @@ import itertools
 import multiprocessing as mp
 import numpy as np
 import time
-
+  # EXPERIMENTAL, VERY COMPUTATIONALLY INTENSIVE
 
 def geo_pre_mean(iterable):
     a = np.array(iterable)
