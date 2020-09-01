@@ -2,7 +2,7 @@ This produces the number of 1..k vectors of length N that contain the average of
 
     (1,1,1,1)
     
-contains its average, 
+contains its arithmetic mean, 
 
     (1+1+1+1)/4 = 1 
     
