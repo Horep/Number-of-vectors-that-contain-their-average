@@ -6,6 +6,7 @@ def H(v):
     product = 3*v[0]*v[1]*v[2]
     for x in v:
         if x*summand == product:
+            print(v)
             return True
     return False
 
@@ -14,12 +15,12 @@ def a(n):  # Calculates exact number of vectors that contain their geo mean
     if n == 1:
         prob = 1
     else:  # Brute force method
-        prob = 0
-        for i in itertools.product(range(1, n+1), repeat=3):
+        prob = n
+        for i in itertools.combinations(range(1, n+1), 3):
             x = list(i)
             Add = H(x)
             if Add is True:
-                prob += 1
+                prob += 6
     return prob
 
 
