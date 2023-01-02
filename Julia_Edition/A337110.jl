@@ -1,7 +1,3 @@
-using Pkg
-Pkg.add("DataStructures")
-using DataStructures
-
 function give_incremental(n::Int64)
     if n==1 || minimum([(i^2 % n) for i ∈ 1:(n-1)]) > 0  # if x^2 == 0 (mod n) has more than one solution this set has a minimum of 0.
         return 1
