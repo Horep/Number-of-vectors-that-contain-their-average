@@ -3,9 +3,10 @@ function give_incremental(n::Int64)
         return 1
     end
     count = 1  # takes care of (n,n,n,n)
+    n_to_the_four = n^4
     for c ∈  1:n, b ∈ 1:c, a ∈ 1:b  # (a,b,c,n) subject to a≤b≤c≤n
         val = a*b*c*n
-        if val ∈ [a^4, b^4, c^4] && val !== n^4  # checking if a*b*c*n = a^4, b^4, c^4 but not n^4
+        if val ∈ [a^4, b^4, c^4] && val !== n_to_the_four  # checking if a*b*c*n = a^4, b^4, c^4 but not n^4
             count = count + give_permutations(a, b, c, n)
         end
     end
@@ -14,7 +15,7 @@ end
 
 function give_permutations(a, b, c, n)
     if a == b || b == c || c == n
-        return 12  # of the form (a,a,c,n), only 12 permutations
+        return 12  # of the form (a,a,c,n), (a,b,b,n), (a,b,n,n), only 12 permutations
     else
         return 24  # of the form (a,b,c,n), 24 permutations
     end
@@ -22,7 +23,7 @@ end
 
 function first(n::Int64)
     total = 0
-    for i in 1:n
+    for i ∈ 1:n
         total = total + give_incremental(i)
         print(total,"\n")
     end
